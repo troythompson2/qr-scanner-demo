@@ -16,10 +16,9 @@ export class HomePage {
 
   ngAfterViewInit(): void {
     console.log("After Home Page Initialized");
-    this.prepareQRScanner();
   }
 
-  prepareQRScanner() {
+  startScanning() {
     console.log("Preparing QR Scranner");
     this.qrScanner.prepare()
       .then((status: QRScannerStatus) => {
