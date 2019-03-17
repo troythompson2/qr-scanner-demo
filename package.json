@@ -9,7 +9,17 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "browser-clean": "ionic cordova platform remove browser",
+    "browser-build": "ionic cordova build browser --prod --release",
+    "browser-view": "ionic serve --cordova --platform browser",
+    "browser-deploy": "ionic build --prod --release && firebase deploy",
+    "apple-clean": "ionic cordova platform remove ios",
+    "apple-build": "ionic cordova platform add ios && ionic cordova prepare ios && ionic cordova build ios --prod --release",
+    "apple-view": "open platforms/ios/imp.xcodeproj",
+    "google-clean": "ionic cordova platform remove android",
+    "google-build": "export ANDROID_HOME=~/Library/Android/sdk && export PATH=${PATH}:${ANDROID_HOME}/tools && export PATH=${PATH}:${ANDROID_HOME}/platform-tools && ionic cordova platform add android@6.4.0 && ionic cordova prepare android && ionic cordova build android --prod --release",
+    "google-view": "export ANDROID_HOME=~/Library/Android/sdk && export PATH=${PATH}:${ANDROID_HOME}/tools && export PATH=${PATH}:${ANDROID_HOME}/platform-tools && ionic cordova run android --prod --device"
   },
   "private": true,
   "dependencies": {
