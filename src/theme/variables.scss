@@ -1,6 +1,31 @@
 // Ionic Variables and Theming. For more info, please see:
 // http://ionicframework.com/docs/theming/
 
+
+html.cameraView {
+  background: transparent none !important;
+
+  body, ion-app, .modal-wrapper, .ion-page {
+    background: transparent none !important;
+  }
+
+  ion-content {
+    --background: var(--ion-background-color, transparent);
+  }
+
+  ion-page {
+    visibility: hidden;
+  }
+
+  app-home {
+    visibility: hiddent;
+  }
+
+  ion-content {
+    --background: var(--ion-backgroudn-color, #FFF);
+  }
+}
+
 /** Ionic CSS Variables **/
 :root {
   /** primary **/

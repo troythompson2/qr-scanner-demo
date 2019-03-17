@@ -5,12 +5,12 @@
     </ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
   <ion-grid>
     <ion-row>
       <ion-col text-center>
-        <ion-button (click)="startScanning()" size="large">START SCANNING</ion-button>
+        <ion-button *ngIf="!scanning" (click)="toggleScan()" size="large">START SCANNING</ion-button>
+        <ion-button *ngIf="scanning" (click)="toggleScan()" color="danger" size="large">STOP SCANNING</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
