@@ -8,6 +8,7 @@ import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
 })
 export class HomePage {
 
+  readyToScan: boolean = false;
   scanning: boolean = false;
 
   constructor(private qrScanner: QRScanner) { }
@@ -16,19 +17,13 @@ export class HomePage {
     console.log("Home Page Initialized");
   }
 
-  toggleScanning(): void {
-    this.scanning = !this.scanning;
-    if (this.scanning) { this.startScanning(); }
-    else { this.stopScanning(); }
-  }
-
-  startScanning(): void {
-    console.log("Preparing QR Scranner");
+  prepareScanner(): void {
     this.qrScanner.prepare()
       .then((status: QRScannerStatus) => {
         if (status.authorized) {
           console.log("Camera permision authorized");
-          (window.document.querySelector('html') as HTMLElement).classList.add('cameraView');
+          this.readyToScan = true;
+          this.scanning = true;
           let scanSub = this.qrScanner.scan().subscribe((text: string) => {
             console.log('Scanned something', text);
             this.qrScanner.hide();
@@ -43,7 +38,20 @@ export class HomePage {
       .catch((e: any) => console.log('Error is', e));
   }
 
+  toggleScanner(): void {
+    this.scanning = !this.scanning;
+    console.log("Toggled Scanner", this.scanning);
+    if (this.scanning) { this.startScanning(); }
+    else { this.stopScanning(); }
+  }
+
+  startScanning(): void {
+    console.log("Started Scanning");
+    (window.document.querySelector('html') as HTMLElement).classList.add('cameraView');
+  }
+
   stopScanning(): void {
+    console.log("Stopped Scanning");
     (window.document.querySelector('html') as HTMLElement).classList.remove('cameraView');
   }
 

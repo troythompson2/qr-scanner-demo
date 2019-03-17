@@ -9,8 +9,13 @@
   <ion-grid>
     <ion-row>
       <ion-col text-center>
-        <ion-button *ngIf="!scanning" (click)="toggleScan()" size="large">START SCANNING</ion-button>
-        <ion-button *ngIf="scanning" (click)="toggleScan()" color="danger" size="large">STOP SCANNING</ion-button>
+        <ion-button *ngIf="!readyToScan" (click)="prepareScanner()" size="large">PREPARE SCANNER</ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="readyToScan">
+      <ion-col text-center>
+        <ion-button *ngIf="!scanning" (click)="toggleScanner()" color="success" size="large">START SCANNING</ion-button>
+        <ion-button *ngIf="scanning" (click)="toggleScanner()" color="danger" size="large">STOP SCANNING</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
